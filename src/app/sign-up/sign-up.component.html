@@ -1,4 +1,54 @@
-<div style="height: 300px; background-color: green;">
-    <p>The static state of parent1 sets the 3D transform and perspective states, starting at 0px height. The static state of parent3 sets the transition and transformation of the rotation. Upon hover the parent1 and parent3 heights are animated to full height, 111px in this case, and rotated to 0deg, i.e. a front-facing state.</p>
+
+
+
+<div class="wrapper">
+    <h2>Sign-Up</h2>
+    <p>
+        Get ready for the 2019 Table Tennis Tourney! The company will be providing the food, drinks and equipment so just come prepared to have some fun!
+    </p>
+    <!-- <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)"> -->
+    <div fxLayout="row" fxLayout.lt-lg="column">
+        <div style="text-align: center;" fxHide fxShow.lt-lg fxFlex="100%">
+            <img src="assets/Paddle-Blue.png" style="max-height: 20vh;"/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <div fxFlex="40%" fxFlex.lt-lg="100%">
+            <form fxLayout="column" [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
+                <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+                    <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                        <input matInput placeholder="Name" formControlName="name">
+                    </mat-form-field>
+                </div>
+                <div class="input-row" fxLayout="row" fxLayoutGap="20px" >
+                    <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email" formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Shirt Size</mat-label>
+                        <mat-select formControlName="shirtSize" [panelClass]="panel-class">
+                            <mat-option *ngFor="let size of shirtSizes" [value]="size.id">
+                            {{ size.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>      
+                <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+                    <button mat-flat-button color="accent" type="submit">
+                        Sign Up
+                    </button>  
+                </div>                            
+            </form>
+            <br/>
+        </div>
+        <div style="text-align: right;"  fxShow fxHide.lt-lg fxFlex>
+            <img src="assets/Paddle-Blue.png" style="max-height: 30vh;"/>
+        </div>
+    </div>    
 </div>
 

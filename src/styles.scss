@@ -3,9 +3,11 @@
 footer {
     background-color: map-get($mat-primary, main);
     padding: 20px;
-    font-family: 'Roboto';
+    
 }
 
 body, html {
     margin: 0;
+    font-family: 'Roboto';
 }
+

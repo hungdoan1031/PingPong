@@ -20,9 +20,10 @@
           <!-- <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>   -->
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content #container  fxLayout="column" style="min-height: calc(100vh - 64px); position: relative;">
-        <div>
-          <img src="assets/table-tennis-4291378_1920.jpg" style="max-width: 100%;"/>  
+    <mat-sidenav-content #container fxLayout="column" style="min-height: calc(100vh - 64px); position: relative;">
+        <div fxLayoutAlign="column center" style="height: 40vh; overflow: hidden; background-image: url('assets/table-tennis-4291378_1920.jpg'); background-size: cover; background-position: center center;">
+          <span fxFlex></span>
+          <div class="title" >Table Tennis Tourney</div>
         </div>
         <div [@routeAnimations]="prepareRoute(outlet)" >
             <router-outlet #outlet="outlet"></router-outlet>

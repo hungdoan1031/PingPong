@@ -2,7 +2,7 @@ import { trigger, transition, style, query, animateChild, animate, group } from 
 
 export const slideInAnimation =
   trigger('routeAnimations', [
-    transition('* <=> *', [
+    transition('SignUpPage <=> TeamRostersPage', [
       style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
@@ -10,7 +10,7 @@ export const slideInAnimation =
           top: 0,
           left: 0,
           width: '100%',
-          transition: 'all 1s linear',
+          //transition: 'all 1s linear',
           'transform-origin': 'right',
           'transform-style': 'preserve-3d',          
         })
@@ -21,13 +21,13 @@ export const slideInAnimation =
             transform: 'rotateY(180deg)',        
         })
       ]),
-      query(':leave', animateChild()),
+      //query(':leave', animateChild()),
       group([
         query(':leave', [
           animate('500ms ease-in-out', 
             style({ 
-                transform: 'perspective(1000px) rotateY(0deg)',
-                'z-index': '-1'
+                //transform: 'perspective(1000px) rotateY(-180deg)',
+                'z-index': '-1',
             }))
         ]),
         query(':enter', [
@@ -38,6 +38,6 @@ export const slideInAnimation =
             }))
         ])
       ]),
-      query(':enter', animateChild()),
+      //query(':enter', animateChild()),
     ]),
   ]);
