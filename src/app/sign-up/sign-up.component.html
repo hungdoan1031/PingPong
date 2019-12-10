@@ -16,19 +16,19 @@
         </div>
         <div fxFlex="40%" fxFlex.lt-lg="100%">
             <form fxLayout="column" [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
-                <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+                <div fxLayout="row" fxLayoutGap="20px">
                     <mat-form-field appearance="outline">
                             <mat-label>Name</mat-label>
                         <input matInput placeholder="Name" formControlName="name">
                     </mat-form-field>
                 </div>
-                <div class="input-row" fxLayout="row" fxLayoutGap="20px" >
+                <div fxLayout="row" fxLayoutGap="20px" >
                     <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
                         <input matInput placeholder="Email" formControlName="email">
                     </mat-form-field>
                 </div>
-                <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+                <div fxLayout="row" fxLayoutGap="20px">
                     <mat-form-field appearance="outline">
                         <mat-label>Shirt Size</mat-label>
                         <mat-select formControlName="shirtSize" [panelClass]="panel-class">
@@ -38,7 +38,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>      
-                <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+                <div fxLayout="row" fxLayoutGap="20px">
                     <button mat-flat-button color="accent" type="submit">
                         Sign Up
                     </button>  

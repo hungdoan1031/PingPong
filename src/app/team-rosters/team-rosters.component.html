@@ -1,13 +1,21 @@
+<div style="margin: 20px;">
+    <h2>Team Rosters</h2>
+</div>
 
-<div fxLayout="row" fxLayout.lt-lg="column">
-    <div *ngFor="let team of teams" fxFlex>
-        <div>
-            <div>
-                <div [ngStyle]="{'background-color': team.color}" class="team-title" >TEAM {{ team. name }}</div>
-            </div>
-            <div *ngFor="let teamMember of team.teamMembers">
-                {{ teamMember.name }}
-            </div>
+<div fxLayout="row" fxLayout.lt-lg="column" style="margin: 20px; min-height: 40vh;">
+    <div *ngFor="let team of teams" fxFlex class="team">
+        <div class="team-row-title">
+            <div [ngStyle]="{'background-color': team.color}" class="team-title" >TEAM {{ team. name }}</div>
         </div>
+        <ng-container *ngFor="let teamMember of team.teamMembers" >
+            <div *ngIf="teamMember.id != '' else spaceFiller" class="team-row">
+                    {{teamMember.name}}
+            </div>                     
+            <ng-template #spaceFiller>
+                <div class="team-row space-filler" fxShow fxHide.lt-lg>
+                    SpaceFiller
+                </div>                
+            </ng-template>
+        </ng-container>
     </div>
 </div>

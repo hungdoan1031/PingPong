@@ -1,6 +1,63 @@
-.team-title {
+$row-bg-color: #ccc;
+$row-border-color: #555;
+
+.team {
+    margin-bottom: 20px;
+}
+
+.team .team-row {
+    text-align: center;
+    border-left: 1px solid $row-border-color;
+}
+
+.team:last-child .team-row {
+    border-right: 1px solid $row-border-color;
+}
+
+.team:first-child .team-row, .team:last-child .team-row-title{
+    text-align: left;
+}
+
+.team:last-child .team-row, .team:last-child .team-row-title {
+    text-align: right;
+}
+
+.team .team-row {
+    padding: 10px;
+    background-color: $row-bg-color;
+    
+}
+
+.team .team-row {
+    border-bottom: 1px solid $row-border-color;
+}
+
+.team .team-title {
     color : white;
     text-transform: uppercase;
-    padding: 5px;
+    padding: 10px;
     width: 200px;
+    display: inline-block;
+}
+
+.team-row-title {
+    border-bottom: 1px solid $row-border-color ;
+}
+
+.space-filler {
+    color: transparent;
+}
+
+@media only screen and (max-width: 1279px) {
+    .team {
+        text-align: left !important;
+    }
+
+    .team .team-row, .team .team-row-title {        
+        text-align: left !important;
+    }
+
+    .team .team-row {
+        border-right: 1px solid $row-border-color !important;
+    }
 }
