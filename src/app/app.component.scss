@@ -1,7 +1,13 @@
 @import 'src/theme.scss';
-
+$dark-blue: #0e0e52;
 .title {
     color: $light-text;
     padding: 20px; 
     font-size: xxx-large; 
 }
+
+footer {
+    color: white;
+    background-color: $dark-blue;
+}
+

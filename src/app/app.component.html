@@ -1,35 +1,36 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row fxLayoutAlign="space-between center" >
-    
-      <button mat-icon-button fxShow.xs fxHide.gt-xs>
-        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-      </button>
-      <span>ACMEWeb</span>
-      <div fxHide fxShow.gt-xs>
+<mat-toolbar color="primary" *ngIf="!mep.expanded">
+  <mat-toolbar-row fxLayoutAlign="space-between center">    
+      
+      <span fxShow fxHide.lt-lg>ACMEWeb</span>      
+      <div fxShow fxHide.lt-lg>
           <a mat-button [routerLink]="['/']">Sign Up</a>
           <a mat-button [routerLink]="['/team-rosters']">Team Roster</a> 
-      </div>      
+      </div>  
+
+      <!-- For smaller screen -->
+      <span mat-button fxHide fxShow.lt-lg>Table Tennis Tourney</span>
+      <button mat-button fxHide fxShow.lt-lg (click)="mep.expanded = true;">
+          <mat-icon>menu</mat-icon>            
+          Menu   
+      </button>                 
   </mat-toolbar-row>
 </mat-toolbar>
-
-<mat-sidenav-container style="flex: 1 1 auto;" >
-    <mat-sidenav #sidenav>
-      <mat-nav-list>    
-          <a mat-list-item [routerLink]="['/']">Sign Up</a>
-          <a mat-list-item [routerLink]="['/team-rosters']">Team Roster</a>
-          <!-- <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>   -->
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content #container fxLayout="column" style="min-height: calc(100vh - 64px); position: relative;">
-        <div fxLayoutAlign="column center" style="height: 40vh; overflow: hidden; background-image: url('assets/table-tennis-4291378_1920.jpg'); background-size: cover; background-position: center center;">
-          <span fxFlex></span>
-          <div class="title" >Table Tennis Tourney</div>
-        </div>
-        <div [@routeAnimations]="prepareRoute(outlet)" >
-            <router-outlet #outlet="outlet"></router-outlet>
-        </div>
-        <footer fxFlexOffset="auto">
-          <span>@ 2019 ACMEWeb Corporation</span>
-        </footer>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-expansion-panel #mep color="primary">
+  <mat-nav-list color="primary">    
+      <a mat-list-item [routerLink]="['/']" color="primary">Sign Up</a>
+      <a mat-list-item [routerLink]="['/team-rosters']">Team Roster</a>
+      <a mat-list-item (click)="mep.expanded=false" href="#" mat-list-item>Close</a>  
+  </mat-nav-list>
+</mat-expansion-panel>
+<div fxLayout="column" style="min-height: calc(100vh - 64px); position: relative;">
+    <div fxLayoutAlign="column center" style="height: 40vh; overflow: hidden; background-image: url('assets/table-tennis-4291378_1920.jpg'); background-size: cover; background-position: center center;">
+      <span fxFlex></span>
+      <div class="title" >Table Tennis Tourney</div>
+    </div>
+    <div [@routeAnimations]="prepareRoute(outlet)" >
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    <footer fxFlexOffset="auto" color="dark-blue">
+      <span>@ 2019 ACMEWeb Corporation</span>
+    </footer>
+</div>

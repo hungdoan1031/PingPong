@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ShirtSize } from './models/shirtSize';
 import { Observable } from 'rxjs';
 import { Team } from './models/team';
+import { TeamMember } from './models/teamMember';
 
 
 @Injectable({
@@ -19,5 +20,16 @@ export class HttpService {
   public getTeams() : Observable<Team[]> {
     return this.httpClient.get<Team[]>(this.apiUrl + "teams");
   }
+
+  public getTeam(id:string) : Observable<Team> {
+    return this.httpClient.get<Team>(this.apiUrl + "teams/" + id);
+  }
+
+  public createTeamMember(teamMember:TeamMember) {
+    return this.httpClient.post<TeamMember>(this.apiUrl + "teammembers", teamMember);
+  }
   
+  public getFile(path:string) : Observable<any> {
+    return this.httpClient.get(path, { responseType: "blob" });
+  }
 }

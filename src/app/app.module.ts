@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormsModule, ReactiveFormsModule   } from '@angular/forms';
 import { SignUpResultComponent } from './sign-up-result/sign-up-result.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatExpansionModule
     
   ],
   providers: [],
