@@ -29,7 +29,8 @@ export class TeamRostersComponent implements OnInit {
 
       this.teams.forEach(function(team, index) {
         if (team.teamMembers.length < largestNum) {
-          for (let i = 0; i < largestNum - team.teamMembers.length; i++) {
+          console.log(largestNum, team.teamMembers.length, largestNum - team.teamMembers.length);
+          for (let i = largestNum - team.teamMembers.length; i > 0; i--) {            
             team.teamMembers.push({
               id : '',
               name: '',
@@ -37,12 +38,11 @@ export class TeamRostersComponent implements OnInit {
               teamId :'',
               shirtSize: null,
               shirtSizeId:''              
-            })
+            });
           }
         }
       });
 
-      console.log(this.teams);
       // Look
     })
   }

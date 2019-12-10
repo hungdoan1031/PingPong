@@ -10,11 +10,16 @@ $row-border-color: #555;
     border-left: 1px solid $row-border-color;
 }
 
+.team  .team-row-title {
+    border-bottom: 1px solid $row-border-color ;
+    text-align: center;
+}
+
 .team:last-child .team-row {
     border-right: 1px solid $row-border-color;
 }
 
-.team:first-child .team-row, .team:last-child .team-row-title{
+.team:first-child .team-row, .team:first-child .team-row-title{
     text-align: left;
 }
 
@@ -40,9 +45,7 @@ $row-border-color: #555;
     display: inline-block;
 }
 
-.team-row-title {
-    border-bottom: 1px solid $row-border-color ;
-}
+
 
 .space-filler {
     color: transparent;
