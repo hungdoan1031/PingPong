@@ -11,3 +11,25 @@ footer {
     background-color: $dark-blue;
 }
 
+.mat-expansion-panel-body{
+    padding: 0;
+}
+
+.mat-expansion-panel .mat-list-item {
+    background-color: map-get($map: $mat-primary, $key: main);
+    color: $light-text;
+}
+
+.mat-expansion-panel .mat-list-item:hover {
+    background-color: #3943b7;
+}
+
+.mat-nav-list {
+    padding: 0 !important;
+    background-color: map-get($map: $mat-primary, $key: main);
+}
+
+.title {
+    max-width: 30vw;
+    text-align: center;
+}

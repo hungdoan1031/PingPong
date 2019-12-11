@@ -18,3 +18,12 @@ body, html {
 .red.mat-form-field-appearance-outline .mat-form-field-outline {    
     color:  #ec0000;
 }
+
+.mat-expansion-panel-body{
+    padding: 0 !important;
+}
+
+.container {
+    min-height: calc(60vh - 160px);
+    margin: 10px 20px;
+}
