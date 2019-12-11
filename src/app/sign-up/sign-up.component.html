@@ -15,6 +15,10 @@
         </div>
         <div fxFlex="40%" fxFlex.lt-lg="100%">
             <form fxLayout="column" [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
+                <div fxLayout="row" fxLayoutGap="20px" *ngIf="error != null && error != ''" class="error">
+                    {{ error }}
+                    <br/>
+                </div>
                 <div fxLayout="row" fxLayoutGap="20px">
                     <mat-form-field appearance="outline" class="green">
                             <mat-label>Name</mat-label>

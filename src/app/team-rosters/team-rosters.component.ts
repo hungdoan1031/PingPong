@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../models/team';
 import { HttpService } from '../http.service';
-import { TeamMember } from '../models/teamMember';
+
 
 @Component({
   selector: 'app-team-rosters',
   templateUrl: './team-rosters.component.html',
-  styleUrls: ['./team-rosters.component.scss'],
-  animations: []
+  styleUrls: ['./team-rosters.component.scss']
 })
 export class TeamRostersComponent implements OnInit {
 
@@ -19,6 +18,7 @@ export class TeamRostersComponent implements OnInit {
   ngOnInit() {
     this.httpService.getTeams().subscribe(teams => {
       this.teams = teams;
+
       // find the largest team member number
       let largestNum = 0;
       this.teams.forEach(function(team, index) {
@@ -27,6 +27,7 @@ export class TeamRostersComponent implements OnInit {
         }
       });
 
+      // Fill up empty spaces
       this.teams.forEach(function(team, index) {
         if (team.teamMembers.length < largestNum) {
           for (let i = largestNum - team.teamMembers.length; i > 0; i--) {            

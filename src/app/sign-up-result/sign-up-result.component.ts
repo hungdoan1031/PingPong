@@ -21,7 +21,7 @@ export class SignUpResultComponent implements OnInit {
           this.httpService.getTeam(teamId).subscribe(team => {
             this.team = team;  
 
-            // Check if the image exists
+            // Check if the image exists. If not, use the default one.
             let imagePath = "assets/Paddle-" + team.name + ".png";
             this.httpService.getFile(imagePath).subscribe(
               file => {                

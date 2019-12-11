@@ -2,21 +2,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ShirtSize } from '../models/shirtSize';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
-import { TeamMember } from '../models/teamMember';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
-  animations: [],
+  styleUrls: ['./sign-up.component.scss']
 })
 
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
-
   shirtSizes: ShirtSize[];
-  mobileView: boolean;
+  error: string;
   constructor(private httpService: HttpService, private fb: FormBuilder,private router: Router) { 
     this.signUpForm = fb.group({
       name : null,
@@ -28,24 +25,23 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     this.httpService.getShirtSizes().subscribe(sizes => {
       this.shirtSizes = sizes;
-    })
+    });
   }
 
   onSubmit(teamMember) {    
     teamMember.id = this.newGuid();
-    this.httpService.createTeamMember(teamMember).subscribe(newMember => {
-      this.router.navigate(['sign-up-result'], { queryParams: { teamid: newMember.teamId }});
-    });   
+    this.httpService.createTeamMember(teamMember).subscribe(
+      newMember => {
+        this.router.navigate(['sign-up-result'], { queryParams: { teamid: newMember.teamId }});
+        this.error = null
+      },
+      error => {
+        this.error = error;
+      }
+      );   
   }
 
-  onResize(event){
-    if (event.target.innerWidth < 1200) {
-      this.mobileView = false;
-    } else {
-      this.mobileView = true;
-    }
-  }
-
+  // Create a Guid for member id
   newGuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0,
