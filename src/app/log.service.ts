@@ -34,11 +34,8 @@ export class LogService {
       logLevel :level 
     };
 
-    console.log(JSON.stringify(logEntry));
-
     this.httpClient.post<LogEntry>(this.apiUrl + "logentries", JSON.stringify(logEntry)).subscribe(
       resp => {
-        console.log(resp);
       },
       error => {
         console.error(error);

@@ -32,7 +32,6 @@ export class SignUpComponent implements OnInit {
     this.httpService.getShirtSizes().subscribe(sizes => {
       this.shirtSizes = sizes;
     });
-    this.logging.info("test signup");
   }
 
   onSubmit(teamMember) {    
