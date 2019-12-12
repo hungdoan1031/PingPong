@@ -3,6 +3,7 @@ import { HttpService } from '../http.service';
 import { ShirtSize } from '../models/shirtSize';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LogService } from '../log.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,12 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   shirtSizes: ShirtSize[];
   error: string;
-  constructor(private httpService: HttpService, private fb: FormBuilder,private router: Router) { 
+  constructor(    
+    private httpService: HttpService, 
+    private fb: FormBuilder,
+    private router: Router, 
+    private logging: LogService) { 
+      
     this.signUpForm = fb.group({
       name : null,
       email : null,
@@ -26,6 +32,7 @@ export class SignUpComponent implements OnInit {
     this.httpService.getShirtSizes().subscribe(sizes => {
       this.shirtSizes = sizes;
     });
+    this.logging.info("test signup");
   }
 
   onSubmit(teamMember) {    
@@ -33,12 +40,14 @@ export class SignUpComponent implements OnInit {
     this.httpService.createTeamMember(teamMember).subscribe(
       newMember => {
         this.router.navigate(['sign-up-result'], { queryParams: { teamid: newMember.teamId }});
-        this.error = null
+        this.error = null;
+        this.logging.info("Add new member " + newMember.name + "to team " + newMember.id);
       },
       error => {
         this.error = error;
+        this.logging.error(error);
       }
-      );   
+    );   
   }
 
   // Create a Guid for member id

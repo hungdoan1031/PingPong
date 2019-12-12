@@ -4,14 +4,18 @@ import { ShirtSize } from './models/shirtSize';
 import { Observable } from 'rxjs';
 import { Team } from './models/team';
 import { TeamMember } from './models/teamMember';
+import { ConfigService } from './config.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {  
-  apiUrl: string = "http://pingpongapi.hungthespiderman.com/api/";
-  constructor(private httpClient: HttpClient) {}
+  apiUrl: string;
+  constructor(private httpClient: HttpClient, private config: ConfigService) {
+    this.apiUrl = this.config.baseUrl;
+    console.log(this.apiUrl);
+  }
 
   public getShirtSizes() : Observable<ShirtSize[]> {
     return this.httpClient.get<ShirtSize[]>(this.apiUrl + "shirtsizes");

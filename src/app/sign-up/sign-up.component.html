@@ -24,7 +24,7 @@
                             <mat-label>Name</mat-label>
                         <input matInput placeholder="Name" formControlName="name" required>
                         <div class="error" *ngIf="signUpForm.controls['name'].hasError('required') && signUpForm.controls['name'].touched">
-                            Primary Email not valid.
+                            Name is required.
                        </div>
                     </mat-form-field>
                 </div>
@@ -32,8 +32,11 @@
                     <mat-form-field appearance="outline" class="red">
                             <mat-label>Email</mat-label>
                         <input matInput placeholder="Email" formControlName="email" email required>
-                        <div class="error" *ngIf="(signUpForm.controls['email'].hasError('email') || signUpForm.controls['email'].hasError('required')) && signUpForm.controls['email'].touched">
-                            Primary Email not valid.
+                        <div class="error" *ngIf="signUpForm.controls['email'].hasError('required') && signUpForm.controls['email'].touched">
+                            Email is required.
+                       </div>
+                       <div class="error" *ngIf="signUpForm.controls['email'].hasError('email') && signUpForm.controls['email'].touched">
+                            Email is not valid.
                        </div>
                     </mat-form-field>
                     
