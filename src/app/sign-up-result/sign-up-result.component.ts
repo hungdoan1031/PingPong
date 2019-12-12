@@ -14,7 +14,7 @@ export class SignUpResultComponent implements OnInit {
 
   team: Team;
   imagePath: string;
-  ngOnInit() {
+  ngOnInit() {    
       this.route.queryParams.subscribe(params => {
         let teamId = params['teamid'];
         if (teamId) {

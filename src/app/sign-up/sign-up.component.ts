@@ -29,6 +29,8 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.logging.info("test 11111");
+
     this.httpService.getShirtSizes().subscribe(sizes => {
       this.shirtSizes = sizes;
     });
@@ -40,7 +42,7 @@ export class SignUpComponent implements OnInit {
       newMember => {
         this.router.navigate(['sign-up-result'], { queryParams: { teamid: newMember.teamId }});
         this.error = null;
-        this.logging.info("Add new member " + newMember.name + "to team " + newMember.id);
+        this.logging.info("Add new member " + newMember.name + " to team " + newMember.id);
       },
       error => {
         this.error = error;

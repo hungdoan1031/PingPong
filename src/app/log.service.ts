@@ -8,11 +8,11 @@ import { ConfigService } from './config.service';
 })
 export class LogService {
 
+  apiUrl: string;
   constructor(private httpClient: HttpClient, private config: ConfigService) { 
     this.apiUrl = this.config.baseUrl;
   }
-
-  apiUrl: string = "http://pingpongapi.hungthespiderman.com/api/";
+  
   public info(msg: any) {
     this.createLog(new Date(), msg, LogLevel.Info);
   }
@@ -34,7 +34,7 @@ export class LogService {
       logLevel :level 
     };
 
-    this.httpClient.post<LogEntry>(this.apiUrl + "logentries", JSON.stringify(logEntry)).subscribe(
+    this.httpClient.post<LogEntry>(this.apiUrl + "logentries", logEntry).subscribe(
       resp => {
       },
       error => {

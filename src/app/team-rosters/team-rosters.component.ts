@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../models/team';
 import { HttpService } from '../http.service';
+import { LogService } from '../log.service';
 
 
 @Component({
@@ -11,8 +12,7 @@ import { HttpService } from '../http.service';
 export class TeamRostersComponent implements OnInit {
 
   teams: Team[];
-  apiUrl: string = "http://pingpongapi.hungthespiderman.com/api/";
-  constructor(private httpService: HttpService) { 
+  constructor(private httpService: HttpService, private logging: LogService) { 
   }
 
   ngOnInit() {
