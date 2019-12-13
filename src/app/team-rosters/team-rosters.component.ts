@@ -12,10 +12,12 @@ import { LogService } from '../log.service';
 export class TeamRostersComponent implements OnInit {
 
   teams: Team[];
+  isLoading: boolean;
   constructor(private httpService: HttpService, private logging: LogService) { 
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.httpService.getTeams().subscribe(teams => {
       this.teams = teams;
 
@@ -43,7 +45,13 @@ export class TeamRostersComponent implements OnInit {
         }
       });
 
-    })
+    }, 
+    error => {
+      this.logging.error(error)
+    },
+    () => {
+      this.isLoading = false;
+    });
   }
 
 }

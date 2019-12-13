@@ -14,10 +14,12 @@ export class SignUpResultComponent implements OnInit {
 
   team: Team;
   imagePath: string;
+  isLoading: boolean;
   ngOnInit() {    
       this.route.queryParams.subscribe(params => {
         let teamId = params['teamid'];
         if (teamId) {
+          this.isLoading = true;
           this.httpService.getTeam(teamId).subscribe(team => {
             this.team = team;  
 
@@ -30,7 +32,9 @@ export class SignUpResultComponent implements OnInit {
               (error) => {
                 this.imagePath = "assets/Paddle-Blue.png";
               },
-              () => {}
+              () => {
+                this.isLoading = false;
+              }
             )  
     
         });

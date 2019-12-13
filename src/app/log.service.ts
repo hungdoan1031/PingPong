@@ -34,7 +34,7 @@ export class LogService {
       logLevel :level 
     };
 
-    this.httpClient.post<LogEntry>(this.apiUrl + "logentries", logEntry).subscribe(
+    this.httpClient.post(this.apiUrl + "logentries", logEntry, { responseType: "blob" }).subscribe(
       resp => {
       },
       error => {

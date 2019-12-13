@@ -24,6 +24,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { ConfigService } from './config.service';
 import { of, Observable, ObservableInput } from '../../node_modules/rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 function initApp(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -72,7 +73,8 @@ function initApp(http: HttpClient, config: ConfigService): (() => Promise<boolea
     ReactiveFormsModule,
     FormsModule,
     MatGridListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule
     
   ],
   providers: [

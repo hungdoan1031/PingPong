@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   shirtSizes: ShirtSize[];
   error: string;
+  isLoading: boolean;
   constructor(    
     private httpService: HttpService, 
     private fb: FormBuilder,
@@ -29,21 +30,36 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.httpService.getShirtSizes().subscribe(sizes => {
       this.shirtSizes = sizes;
-    });
+    }, 
+      error => {
+        this.logging.error(error);
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   onSubmit(teamMember) {    
     teamMember.id = this.newGuid();
+
+    // Create a team member with the api
+    this.isLoading = true;
     this.httpService.createTeamMember(teamMember).subscribe(
-      newMember => {        
+      newMember => {     
+        this.logging.info(newMember.name  + " was added to team " + newMember.teamId);
         this.router.navigate(['sign-up-result'], { queryParams: { teamid: newMember.teamId }});
         this.error = null;      
       },
       error => {
         this.error = error;
         this.logging.error(error);
+      },
+      () => {
+        this.isLoading = false;
       }
     );   
   }

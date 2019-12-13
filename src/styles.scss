@@ -27,3 +27,10 @@ body, html {
     min-height: calc(60vh - 160px);
     margin: 10px 20px;
 }
+
+.mat-progress-bar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+}
